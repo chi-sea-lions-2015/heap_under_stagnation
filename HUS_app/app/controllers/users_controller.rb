@@ -3,20 +3,31 @@ class UsersController < ApplicationController
   def login
   end
 
-  def create
-    user = User.find_by(email: params[:email].downcase)
-    if user && user.authenticate(params[:password])
-      log_in(user)
-      redirect_to user
+  def welcome
+    if session[:user_id]
+      @user ||= User.find_by(id: session[:user_id])
+    else
+      redirect_to '/login'
+    end
+  end
+
+  def update
+    user = User.find_by(email: params[:session][:email].downcase)
+    if User.authenticate(params[:session][:email].downcase,params[:session][:password])
+      session[:user_id] = user.id
+      redirect_to "/welcome"
     else
       flash.now[:danger] = "Invalid email/password combination"
-      render "new"
+      render :login
     end
   end
 
   def destroy
-    log_out if logged_in?
-    redirect_to root_url
+    @user ||= User.find_by(id: session[:user_id])
+    if @user != nil
+      session.delete(:user_id)
+    end
+    redirect_to '/login'
   end
 
 end
