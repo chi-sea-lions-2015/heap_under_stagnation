@@ -1,6 +1,10 @@
 class User < ActiveRecord::Base
   include BCrypt
 
+  validates :username, :password, :email, presence: true
+  validates :username, :email, uniqueness: true
+  validates :email, format: { with: /\w*@\w*.\w*/, message: "email must be a valid email!!" }
+
   def password
     @password ||= Password.new(self.password_hash)
   end
