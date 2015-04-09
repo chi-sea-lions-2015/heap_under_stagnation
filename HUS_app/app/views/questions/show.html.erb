@@ -1,0 +1,7 @@
+<h1><%= @question.title %></h1>
+<p><strong>Author: </strong><%= @question.asker.username %></p>
+<p><%= @question.content %></p>
+
+<% if @question.asker == @user %>
+  <%= link_to("Edit Question", edit_question_path(@question)) %>
+<% end %>

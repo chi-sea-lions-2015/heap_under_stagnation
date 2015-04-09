@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :users
+  resources :questions
 
   get '/login' => 'users#login'
   post '/login' => 'users#update'
