@@ -15,7 +15,7 @@ class UsersController < ApplicationController
     user = User.find_by(email: params[:session][:email].downcase)
     if User.authenticate(params[:session][:email].downcase,params[:session][:password])
       session[:user_id] = user.id
-      redirect_to "/welcome"
+      redirect_to "/questions"
     else
       flash.now[:danger] = "Invalid email/password combination"
       render :login
