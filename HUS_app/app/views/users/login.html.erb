@@ -1,0 +1,15 @@
+<div class="container">
+  <h1>Login</h1>
+
+  <%= @error if @error %>
+
+  <%= form_tag('/', :controller=>"users", :method=>"post") do %>
+  <%= label_tag :Email %>
+  <%= text_field_tag :email %><br><br>
+  <%= label_tag :Password %>
+  <%= password_field_tag :password %><br><br>
+  <%= submit_tag "Login" %>
+  <% end %>
+
+  <a href="/sign_up"><h3>Sign Up</h3></a>
+</div>
