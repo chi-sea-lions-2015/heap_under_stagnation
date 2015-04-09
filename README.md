@@ -4,7 +4,7 @@
 
 ### User Stories
 
-As a user, I want to sign up
+###### As a user, I want to sign up
 As a user, I want to login
 As a user, I want to create a question after login
 As a user, I want to edit my question
