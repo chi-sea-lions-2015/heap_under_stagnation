@@ -16,6 +16,7 @@ class QuestionsController < ApplicationController
   end
 
   def index
+    session[:current_url] = questions_path
     @user = User.find_by(id: session[:user_id])
     @questions = Question.all
   end
@@ -23,6 +24,7 @@ class QuestionsController < ApplicationController
   def show
     @user = User.find_by(id: session[:user_id])
     @question = Question.find(params[:id])
+    session[:current_url] = question_path(@question)
   end
 
   def edit

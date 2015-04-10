@@ -15,7 +15,7 @@ class UsersController < ApplicationController
     user = User.find_by(email: params[:session][:email].downcase)
     if User.authenticate(params[:session][:email].downcase,params[:session][:password])
       session[:user_id] = user.id
-      redirect_to "/questions"
+      redirect_to session[:current_url]
     else
       flash.now[:danger] = "Invalid email/password combination"
       render :login
@@ -39,7 +39,7 @@ class UsersController < ApplicationController
     if @user != nil
       session.delete(:user_id)
     end
-    redirect_to '/questions'
+    redirect_to :back
   end
 
   private
