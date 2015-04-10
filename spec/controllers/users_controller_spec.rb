@@ -27,4 +27,29 @@ RSpec.describe UsersController, type: :controller do
       end
     end
   end
+
+  describe "#UPDATE" do
+    it "can log a user in" do
+      User.create(username:"sara", email:"sara@sara.com", password:"12345")
+      session[:current_url] = "/questions"
+      put :update, {:session => {email: "sara@sara.com", password: "12345"}}
+      expect(response).to redirect_to("/questions")
+    end
+  end
+
+  describe "#DESTROY" do
+    it "can log the user out" do
+      request.env["HTTP_REFERER"] = "where_i_came_from"
+      user = User.create(username:"sara", email:"sara@sara.com", password:"12345")
+      # session[:user_id] = user.id
+      session[:current_url] = "/questions"
+      delete :destroy, {:session => {user_id: user.id} }
+      expect(response).to redirect_to "where_i_came_from"
+    end
+
+    # it "assigns the requested user as @user" do
+    #   delete :destroy, { id: user.to_param }
+    #   expect(assigns(:user)).to eq(user)
+    # end
+  end
 end
