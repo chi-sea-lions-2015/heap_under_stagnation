@@ -39,7 +39,7 @@ class UsersController < ApplicationController
     if @user != nil
       session.delete(:user_id)
     end
-    redirect_to '/login'
+    redirect_to '/questions'
   end
 
   private
