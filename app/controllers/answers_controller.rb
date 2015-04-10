@@ -13,6 +13,32 @@ class AnswersController < ApplicationController
     end
   end
 
+  def edit
+    if session[:user_id]
+      @user = User.find_by(id: session[:user_id])
+      @question = Question.find(params[:question_id])
+      @answer = Answer.find(params[:id])
+    else
+      redirect_to "/login"
+    end
+  end
+
+  def update
+    @user = User.find_by(id: session[:user_id])
+    @question = Question.find(params[:question_id])
+    @answer = Answer.find(params[:id])
+    @answer.update(answer_params)
+    redirect_to question_path(@question)
+  end
+
+  def destroy
+      @user = User.find_by(id: session[:user_id])
+      @question = Question.find(params[:question_id])
+      @answer = Answer.find(params[:id])
+      @answer.destroy
+      redirect_to question_path(@question)
+  end
+
   private
   def answer_params
     params.require(:answer).permit(:content)
