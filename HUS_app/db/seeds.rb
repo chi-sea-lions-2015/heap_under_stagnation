@@ -12,7 +12,7 @@ end
 10.times do |n|
   samples = User.all.sample(10)
   asker = samples.pop
-  asker.questions.create!(title: Faker::Lorem.word, content: Faker::Lorem.paragraph)
+  asker.questions.create!(title: Faker::Lorem.characters(10), content: Faker::Lorem.paragraph)
 end
 
 100.times do |n|
