@@ -1,5 +1,9 @@
 require 'rails_helper'
 
-RSpec.describe User, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+describe User do
+  let(:user) {User.new(username: "paul", email: "paul@paul.com", password: "12345")}
+
+  it "should have a username" do
+    expect(user.username).to eq("paul")
+  end
 end
