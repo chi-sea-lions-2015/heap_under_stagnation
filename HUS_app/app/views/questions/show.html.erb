@@ -20,6 +20,16 @@
   <%= link_to("Edit Question", edit_question_path(@question)) %>
 <% end %>
 <br><br>
+
+  <h2>Answers:</h2>
+  <div id="answer_list">
+    <%= render @question.answers %>
+  </div>
+
+  <h2>Add an Answer</h2>
+  <%= render 'answers/form' %>
+
+
 <%= form_tag("/questions", :controller=>"users", :method=>"get") do %>
   <%= submit_tag "Back" %>
 <% end %>
