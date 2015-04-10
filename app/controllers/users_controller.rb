@@ -33,7 +33,7 @@ class UsersController < ApplicationController
     if @user != nil
       session.delete(:user_id)
     end
-    redirect_to login_path
+    redirect_to :login
   end
 
   private
