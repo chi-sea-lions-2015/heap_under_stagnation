@@ -15,7 +15,7 @@ end
   asker.questions.create!(title: Faker::Lorem.word, content: Faker::Lorem.paragraph)
 end
 
-10.times do |n|
+100.times do |n|
   sample_u = User.all.sample(10)
   sample_q = Question.all.sample(10)
   user = sample_u.pop
@@ -34,7 +34,7 @@ end
   answer.comments.create!(content: Faker::Lorem.paragraph, commenter: user)
 end
 
-10.times do |n|
+1050.times do |n|
   sample_u = User.all.sample(10)
   sample_q = Question.all.sample(10)
   sample_a = Answer.all.sample(10)

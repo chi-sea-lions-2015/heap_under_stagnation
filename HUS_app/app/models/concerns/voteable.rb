@@ -1,8 +1,14 @@
 module Voteable
   extend ActiveSupport::Concern
-  def total_votes
-    self.votes.sum(direction)
+
+  included do
+    has_many :votes, as: :voteable
   end
+
+  def total_votes
+    self.votes.sum(:direction)
+  end
+
 end
 
 
