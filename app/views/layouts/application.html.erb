@@ -7,8 +7,27 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
+<div class="container">
+  <div class="header clearfix">
+    <nav>
+      <ul class="nav nav-pills pull-right">
+        <li role="presentation" class="active"><a href="#">Home</a></li>
+        <% if !current_user %>
+        <li role="presentation"><%= link_to "Sign Up", signup_path %></li>
+        <% end %>
+        <% if current_user %>
+          <li role="presentation"><%= link_to "Logout", logout_path %></li>
+        <% else %>
+          <li role="presentation"><%= link_to "Login", login_path %></li>
+        <% end %>
+      </ul>
+    </nav>
+    <h3 class="text-muted">Heap Under Stagnation</h3>
+</div>
 <%= yield %>
 
 </body>
 </html>
+
+
+

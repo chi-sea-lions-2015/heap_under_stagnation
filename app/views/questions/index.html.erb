@@ -1,23 +1,18 @@
-<% if @user %>
-  <%= form_tag("/logout", :controller=>"users", :method=>"delete") do %>
-    <%= submit_tag "Logout" %>
-  <% end %>
-<% else %>
-  <%= form_tag("/signup", :controller=>"users", :method=>"get") do %>
-    <%= submit_tag "Sign Up" %>
-  <% end %>
-  <%= form_tag("/login", :controller=>"users", :method=>"get") do %>
-    <%= submit_tag "Login" %>
-  <% end %>
-<% end %>
+  <div class="jumbotron">
+    <h1>Ask A Question</h1>
+    <textarea rows=7 cols=50 class="lead">Type your question here...</textarea>
+    <p class="btn btn-lg btn-success"><%= link_to("Create a New Question", new_question_path) %></p>
+  </div>
+    <h1>All Questions</h1>
+      <div class="row marketing">
+        <div class="col-lg-6">
+        <% @questions.each do |question| %>
+          <h4><%= link_to("#{question.title}",question_path(question))%></h4>
+          <p> <%= question.content %> </p>
+        <% end %>
+        </div>
+      </div>
+</div>
 
-<h1>All Questions</h1>
-
-<% @questions.each do |question| %>
-<h3><%= link_to("#{question.title}",question_path(question))%></h3>
-<% end %>
-
-<h2><%= link_to("Create a New Question", new_question_path) %></h2>
-<br><br>
 
 
