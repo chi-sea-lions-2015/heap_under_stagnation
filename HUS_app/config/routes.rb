@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
-  resources :questions
 
+  resources :questions do
+      resources :answers
+    end
+
+
+  get '/' => 'questions#index'
   get '/login' => 'users#login'
   put '/login' => 'users#update'
   get '/signup' => 'users#signup'
