@@ -1,5 +1,9 @@
 
 <div id="answer_<%=answer.id%>">
 <strong>Author: </strong><%= answer.answerer.username %><br>
-<strong>Answer: </strong><%= answer.content %>
+<strong>Answer: </strong><%= answer.content %><br>
+<% if answer.answerer == @user %>
+  <%= link_to("Edit Answer", edit_question_answer_path(@question, answer)) %>
+<% end %>
+<br><br>
 </div><br>
