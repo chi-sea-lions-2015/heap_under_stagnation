@@ -21,6 +21,11 @@
 <% end %>
 <br><br>
 
+  <h2>Answers:</h2>
+  <div id="answer_list">
+    <%= render @question.answers %>
+  </div>
+
   <h2>Add an Answer</h2>
   <%= render 'answers/form' %>
 
