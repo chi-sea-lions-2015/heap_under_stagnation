@@ -1,8 +1,12 @@
 class QuestionsController < ApplicationController
 
   def new
-    @user = User.find_by(id: session[:user_id])
-    @question = @user.questions.new
+    if session[:user_id]
+      @user = User.find_by(id: session[:user_id])
+      @question = @user.questions.new
+    else
+      redirect_to "/login"
+    end
   end
 
   def create
@@ -28,8 +32,12 @@ class QuestionsController < ApplicationController
   end
 
   def edit
-    @user = User.find_by(id: session[:user_id])
-    @question = Question.find(params[:id])
+    if session[:user_id]
+      @user = User.find_by(id: session[:user_id])
+      @question = Question.find(params[:id])
+    else
+      redirect_to "/login"
+    end
   end
 
   def update
@@ -40,10 +48,10 @@ class QuestionsController < ApplicationController
   end
 
   def destroy
-    @user = User.find_by(id: session[:user_id])
-    @question = Question.find(params[:id])
-    @question.destroy
-    redirect_to questions_path
+      @user = User.find_by(id: session[:user_id])
+      @question = Question.find(params[:id])
+      @question.destroy
+      redirect_to questions_path
   end
 
   private
