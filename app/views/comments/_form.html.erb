@@ -1,4 +1,4 @@
-<%= form_for ([@question, @question.answers.comments.new || @question, @question.comments.new  ])  do |f| %>
+<%= form_for ([@question, @question.comments.new])  do |f| %>
   <p>
     <%= f.label "Your comment: " %><br>
     <%= f.text_area :content %>
