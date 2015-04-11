@@ -26,12 +26,14 @@ class UsersController < ApplicationController
     end
   end
 
+
+
   def destroy
     @user ||= User.find_by(id: session[:user_id])
     if @user != nil
       session.delete(:user_id)
     end
-    redirect_to :back
+    redirect_to :login
   end
 
   private

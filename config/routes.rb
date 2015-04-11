@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
 
   resources :questions do
-      resources :answers
+      resources :comments
+      resources :answers do
+        resources :comments
+      end
     end
 
 
