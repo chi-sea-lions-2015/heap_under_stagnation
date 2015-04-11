@@ -1,5 +1,7 @@
 # Team Name: Heap Under Stagnation
 
+## Paul worked on logout. I have it working minus the correct rerendering of the "login" and "sign-up buttons"
+
 ### Team Member: Paul Clegg, Chase Nutile, Sara Chen, Taylor Masterson
 
 ### User Stories
