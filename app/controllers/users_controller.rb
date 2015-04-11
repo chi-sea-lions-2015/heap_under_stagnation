@@ -35,8 +35,7 @@ class UsersController < ApplicationController
       puts "SESSION DELETED"
     end
     if request.xhr?
-      puts "***************************"
-      redirect_to "/questions"
+      render :partial => 'layouts/logout', layout: false
     end
   end
 

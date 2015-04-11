@@ -1,18 +1,23 @@
   <div class="jumbotron">
-    <h1>Ask A Question</h1>
-    <textarea rows=7 cols=50 class="lead">Type your question here...</textarea>
-    <p class="btn btn-lg btn-success"><%= link_to("Create a New Question", new_question_path) %></p>
+  <h1>Ask A Question</h1>
+  <%= form_for([@question, @user.questions.new], remote: true) do |f| %>
+  <%= f.label :title %>
+  <%= f.text_area :title, :size => "50x1" %><br><br>
+  <%= f.label :content %>
+  <%= f.text_area :content, :size => "50x7"%><br><br>
+  <%= f.submit 'Create a New Question', :class => 'btn btn-lg btn-success' %>
+  <% end %>
+</div>
+<h1>All Questions</h1>
+  <div class="row marketing">
+    <div class="col-lg-12">
+      <div class="question_list">
+    <% @questions.each do |question| %>
+      <h4><%= link_to("#{question.title}",question_path(question))%></h4>
+      <p> <%= question.content %> </p>
+    <% end %>
+    </div>
   </div>
-    <h1>All Questions</h1>
-      <div class="row marketing">
-        <div class="col-lg-12">
-        <% @questions.each do |question| %>
-          <h4><%= link_to("#{question.title}",question_path(question))%></h4>
-          <p> <%= question.content %> </p>
-        <% end %>
-        </div>
-      </div>
-
-
+</div>
 
 

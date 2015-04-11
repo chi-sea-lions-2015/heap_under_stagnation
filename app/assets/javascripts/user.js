@@ -1,7 +1,6 @@
 $(document).ready(function() {
 
   $(".logout_button").on("click", function(event){
-    console.log("HEY!!!")
     var delete_url = $(this).attr("href");
     event.preventDefault();
     $.ajax({
@@ -9,11 +8,18 @@ $(document).ready(function() {
       method: "delete",
       success: function(response){
         console.log(response);
-        $(".pull-right").append("<%= escape_javascript(render :partial => '/layouts/logout', layout: false) %>");
+        $(".pull-right").append(response);
         $(".logout_button").hide();
       }
 
     });
   });
+
+  $(".new_question").on("ajax:success", function(e, data, status, xhr) {
+  $(".question_list").prepend(xhr.responseText);
+  return console.log("stuff", xhr.responseText);
+}).on("ajax:error", function(e, xhr, status, error) {
+  return $("#new_article").prepend("<p>ERROR</p>");
+});
 
 });
