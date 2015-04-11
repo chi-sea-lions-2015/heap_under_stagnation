@@ -14,4 +14,5 @@ Rails.application.routes.draw do
   get '/signup' => 'users#signup'
   post '/signup' => 'users#create'
   delete '/logout' => 'users#destroy'
+  delete '/questions' => 'questions#index'
 end

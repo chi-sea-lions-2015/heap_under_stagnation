@@ -32,8 +32,12 @@ class UsersController < ApplicationController
     @user ||= User.find_by(id: session[:user_id])
     if @user != nil
       session.delete(:user_id)
+      puts "SESSION DELETED"
     end
-    redirect_to :login
+    if request.xhr?
+      puts "***************************"
+      redirect_to "/questions"
+    end
   end
 
   private
