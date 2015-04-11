@@ -12,10 +12,11 @@ class QuestionsController < ApplicationController
   def create
     @user = User.find_by(id: session[:user_id])
     @question = @user.questions.new(question_params)
-    if @question.save
-      redirect_to "/questions"
+    @question.save
+    if request.xhr?
+      render @question, layout: false
     else
-      render :new
+      redirect_to "/questions"
     end
   end
 
