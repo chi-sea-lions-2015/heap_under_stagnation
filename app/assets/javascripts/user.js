@@ -9,7 +9,7 @@ $(document).ready(function() {
       method: "delete",
       success: function(response){
         console.log(response);
-        $(".pull-right").append("<%= escape_javascript(render :partial => '/layouts/logout', layout: false) %>");
+        $(".pull-right").append(response);
         $(".logout_button").hide();
       }
 
