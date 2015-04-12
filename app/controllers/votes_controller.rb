@@ -1,7 +1,5 @@
 class VotesController < ApplicationController
 
-
-
   def questionvoteup
 
     if session[:user_id]

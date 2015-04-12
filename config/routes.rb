@@ -25,7 +25,11 @@ Rails.application.routes.draw do
 
   post '/questions/:question_id/voteup' => 'votes#voteup'
 
+  get '/questions/:question_id/voteup' => 'votes#questionvoteup'
+  get '/questions/:question_id/votedown' => 'votes#questionvotedown'
+
   post '/questions/:question_id/voteup' => 'votes#questionvoteup'
   post '/questions/:question_id/votedown' => 'votes#questionvotedown'
+
 
 end
