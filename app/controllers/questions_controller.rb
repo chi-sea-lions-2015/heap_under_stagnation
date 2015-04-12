@@ -1,5 +1,5 @@
 class QuestionsController < ApplicationController
-  include UsersHelper
+
 
   # def new
   #   if session[:user_id]
