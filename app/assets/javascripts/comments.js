@@ -8,4 +8,12 @@ $(document).ready(function() {
   return $("#new_comment").prepend("<p>ERROR</p>");
 });
 
+
+
+  $(".new_answer_comment").on("ajax:success", function(e, data, status, xhr) {
+    var answerCommentList = $(this).parent().parent().find(".answer_comment_list");
+    answerCommentList.append(xhr.responseText);
+    $(".comment_text_area").val("");
+  });
+
 });
