@@ -1,9 +1,9 @@
 
 <div id="answer_<%=answer.id%>">
   <div class="answer_vote_count">
-   <a href="/answers/<%= @answer.id %>/answervoteup" class="glyphicon glyphicon-chevron-up answer_up"></a>
-   <p><%= @answer.total_votes %></p>
-   <a href="/answers/<%= @answer.id %>/answervotedown" class="glyphicon glyphicon-chevron-down answer_down"></a>
+   <a href="/answers/<%= answer.id %>/answervoteup" class="glyphicon glyphicon-chevron-up answer_up"></a>
+   <p><%= answer.total_votes %></p>
+   <a href="/answers/<%= answer.id %>/answervotedown" class="glyphicon glyphicon-chevron-down answer_down"></a>
  </div>
  <div class="answer_body">
   <strong>Author: </strong><%= answer.answerer.username %><br>

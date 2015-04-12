@@ -36,7 +36,7 @@ class VotesController < ApplicationController
       @question = Question.find(params[:question_id])
       @question.votes.find_or_create_by(user_id: @user.id, direction: 1)
       if request.xhr?
-        render :partial => 'votes/answer_vote_div', layout: false, locals: { question: @question, answer: @answer}
+        render :partial => 'answers/answer', layout: false, locals: { question: @question, answer: @answer}
       end
     else
       redirect_to "/login"
@@ -49,7 +49,7 @@ class VotesController < ApplicationController
       @question = Question.find(params[:question_id])
       @question.votes.find_or_create_by(user_id: @user.id, direction: -1)
       if request.xhr?
-        render :partial => 'votes/answer_vote_div', layout: false, locals: { question: @question, answer: @answer }
+        render :partial => 'answers/answer', layout: false, locals: { question: @question, answer: @answer }
       end
     else
       redirect_to "/login"
