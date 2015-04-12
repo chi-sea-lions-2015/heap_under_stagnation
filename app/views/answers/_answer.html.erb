@@ -1,4 +1,3 @@
-
 <div id="answer_<%=answer.id%>">
   <div class="answer_vote_count">
     <a href="#" class="glyphicon glyphicon-chevron-up answer_up"></a>
@@ -8,6 +7,37 @@
   <div class="answer_body">
     <strong>Author: </strong><%= answer.answerer.username %><br>
     <strong>Answer: </strong><%= answer.content %><br>
+
+    <% if session[:user_id]!=nil %>
+    <div class="answer_comment">
+      <h2>Add a Comment</h2>
+
+      <%= form_for :comment, url: question_answer_path(@question, answer), remote: true, html: { class: "new_answer_comment", id: "new_answer_comment"} do |f| %>
+      <p>
+        <%= f.label "Your comment: " %><br>
+        <%= f.text_area :content, :class => 'comment_text_area'%>
+      </p>
+      <input type="hidden" value=<%=@user.id%> name="comment[user_id]"/>
+      <p>
+        <%= f.submit %>
+      </p>
+      <% end %>
+
+    </div>
+    <% end %>
+
+
+    <ul>
+      <h3>Comments: </h3>
+      <div class="answer_comment_list">
+      <% answer.comments.each do |comment| %>
+      <strong>Comment Author: </strong><%= comment.commenter.username %><br>
+      <strong>Comment: </strong><%= comment.content %><br><br>
+      <% end %>
+      </div>
+    </ul>
+
+
     <% if answer.answerer == @user %>
     <%= link_to("Edit Answer", edit_question_answer_path(@question, answer)) %>
     <% end %>
