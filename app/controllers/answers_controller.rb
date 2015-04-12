@@ -7,7 +7,12 @@ class AnswersController < ApplicationController
       @answer = @question.answers.new(answer_params)
       @answer.user_id = @user.id
       @answer.save
-      redirect_to question_path(@question)
+      if request.xhr?
+        puts "HEYYyYYyYYyyyyyyy"
+        render @answer, layout: false
+      else
+        redirect_to session[:current_url]
+      end
     else
       redirect_to '/login'
     end
