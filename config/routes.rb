@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :votes
   resources :questions do
       resources :comments
       resources :answers do
@@ -16,4 +17,6 @@ Rails.application.routes.draw do
   post '/signup' => 'users#create'
   delete '/logout' => 'users#destroy'
   delete '/questions' => 'questions#index'
+  post '/questions/:question_id/voteup' => 'votes#questionvoteup'
+  post '/questions/:question_id/votedown' => 'votes#questionvotedown'
 end

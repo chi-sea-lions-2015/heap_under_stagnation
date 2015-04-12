@@ -1,8 +1,9 @@
+<a href="/questions/<%=@question.id%>/voteup" class="glyphicon glyphicon-thumbs-up question_up"></a>
+<a href="/questions/<%=@question.id%>/votedown" class="glyphicon glyphicon-thumbs-down question_down"></a>
 <div class="question_vote_count">
-  <a href="#" class="glyphicon glyphicon-chevron-up question_up"></a>
-  <p><%= @question.total_votes %></p>
-  <a href="#" class="glyphicon glyphicon-chevron-down question_down"></a>
+  <%= render 'votes/vote_div' %>
 </div>
+
 <div class="question_body">
   <h1><%= @question.title %></h1>
   <p><strong>Author: </strong><%= @question.asker.username %></p>
