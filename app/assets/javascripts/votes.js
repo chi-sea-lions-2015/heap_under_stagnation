@@ -27,6 +27,7 @@ $(document).ready(function(){
 
   $(".answer_up").on("click", function(event){
     var up_url = $(this).attr("href");
+    console.log("<<<<<<<<<<<<<<>>>>>>>>>>")
     event.preventDefault();
     $.ajax({
       url: up_url,

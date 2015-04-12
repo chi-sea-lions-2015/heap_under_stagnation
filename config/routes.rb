@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   delete '/logout' => 'users#destroy'
   delete '/questions' => 'questions#index'
 
+  # get "/answers/:answer_id/answervoteup" => "votes#answervoteup"
 
   post "/answers/:answer_id/answervoteup" => "votes#answervoteup"
   post "/answers/:answer_id/answervotedown" => "votes#answervotedown"
