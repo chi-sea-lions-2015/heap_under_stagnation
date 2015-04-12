@@ -16,4 +16,11 @@ $(document).ready(function() {
     $(".comment_text_area").val("");
   });
 
+
+  $(".show_answer_comments_form").on("click", function(event){
+    var form = $(this).parent().find(".answer_comment");
+    console.log("HEYYYYYYYYYYYYY");
+    event.preventDefault();
+    form.css("display", "block");
+  });
 });
