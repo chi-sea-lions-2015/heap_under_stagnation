@@ -1,9 +1,7 @@
 
 <div id="answer_<%=answer.id%>">
   <div class="answer_vote_count">
-    <a href="/question/<%= question.id %>/answer/<%= answer.id %>" class="glyphicon glyphicon-chevron-up answer_up"></a>
-    <p><%= answer.total_votes %></p>
-    <a href="#" class="glyphicon glyphicon-chevron-down answer_down"></a>
+    <%= render 'count ' %>
   </div>
   <div class="answer_body">
     <strong>Author: </strong><%= answer.answerer.username %><br>
