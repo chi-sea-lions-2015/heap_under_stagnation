@@ -1,21 +1,23 @@
 class QuestionsController < ApplicationController
+  include UsersHelper
 
-  def new
-    if session[:user_id]
-      @user = User.find_by(id: session[:user_id])
-      @question = @user.questions.new
-    else
-      redirect_to "/login"
-    end
-  end
+  # def new
+  #   if session[:user_id]
+  #     @user = User.find_by(id: session[:user_id])
+  #     @question = @user.questions.new
+  #   else
+  #     redirect_to "/login"
+  #   end
+  # end
 
   def create
     @user = User.find_by(id: session[:user_id])
     @question = @user.questions.new(question_params)
-    if @question.save
-      redirect_to "/questions"
+    @question.save
+    if request.xhr?
+      render @question, layout: false
     else
-      render :new
+      redirect_to questions_path
     end
   end
 
@@ -57,6 +59,13 @@ class QuestionsController < ApplicationController
   private
   def question_params
     params.require(:question).permit(:title, :content)
+  end
+
+  def require_login
+    unless logged_in?
+      flash[:error] = "You must be logged in!!"
+      redirect_to login_path
+    end
   end
 
 end
