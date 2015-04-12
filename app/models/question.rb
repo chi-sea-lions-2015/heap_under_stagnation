@@ -8,7 +8,11 @@ class Question < ActiveRecord::Base
   validates :title, presence: true, length: { in: 5..50}
   validates :content, presence: true
 
-  def sort_popular
+  def self.sort_popular
+    all.sort_by{|question| question.total_votes}.reverse
+  end
+
+  def sort_popular_answers
     self.answers.sort_by{|answer| answer.total_votes}.reverse
   end
 

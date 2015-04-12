@@ -24,7 +24,7 @@ class QuestionsController < ApplicationController
   def index
     session[:current_url] = questions_path
     @user = User.find_by(id: session[:user_id])
-    @questions = Question.all
+    @questions = Question.sort_popular
   end
 
   def show
