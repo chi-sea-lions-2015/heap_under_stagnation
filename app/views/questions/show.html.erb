@@ -8,8 +8,10 @@
   </div>
 
   <% if session[:user_id]!=nil %>
-  <h2>Add a Comment</h2>
-  <%= render 'comments/form' %>
+  <div class="hidden_form">
+    <h2>Add a Comment</h2>
+    <%= render 'comments/form' %>
+  </div>
   <% end %>
 
 
@@ -23,8 +25,12 @@
     <%= render @question.answers %>
   </div>
 
+  <% if session[:user_id]!=nil %>
+  <div class="hidden_form">
   <h2>Add an Answer</h2>
   <%= render 'answers/form' %>
+  </div>
+  <% end %>
 
 
 <%= form_tag("/questions", :controller=>"users", :method=>"get") do %>
