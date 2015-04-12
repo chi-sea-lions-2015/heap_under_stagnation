@@ -41,11 +41,8 @@
     <% if answer.answerer == @user %>
     <%= link_to("Edit Answer", edit_question_answer_path(@question, answer)) %>
     <% end %>
-<<<<<<< HEAD
     <a href="answer_comment<%=answer.id%>" class="show_answer_comments_form">Add a comment</a>
-=======
-    <a href="<%=@question.id%>" class="show_answer_comments_form">Add a comment</a>
->>>>>>> 2ee34090ad3dcb747690ad553e7216b825d9a5c9
+
     <br>
   </div>
 </div><br>
