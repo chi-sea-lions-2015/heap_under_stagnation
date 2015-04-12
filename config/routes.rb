@@ -19,4 +19,6 @@ Rails.application.routes.draw do
   delete '/questions' => 'questions#index'
   post '/questions/:question_id/voteup' => 'votes#questionvoteup'
   post '/questions/:question_id/votedown' => 'votes#questionvotedown'
+  post 'answers/:answer_id/voteup' => 'votes#answervoteup'
+  post 'answers/:answer_id/votedown' => 'votes#answervotedown'
 end
