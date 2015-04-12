@@ -7,6 +7,7 @@ Rails.application.routes.draw do
       end
     end
 
+  post 'questions/:question_id/answers/:answer_id' => 'comments#answer_create'
 
   get '/' => 'questions#index'
   get '/login' => 'users#login'

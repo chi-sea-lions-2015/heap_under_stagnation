@@ -1,8 +1,8 @@
 class CommentsController < ApplicationController
-  def new
-    @question = Question.find(params[:id])
-    @question.comments.new
-  end
+  # def new
+  #   @question = Question.find(params[:id])
+  #   @question.comments.new
+  # end
 
   def create
     if session[:user_id]
@@ -18,6 +18,24 @@ class CommentsController < ApplicationController
     else
       redirect_to "/login"
     end
+  end
+
+  def answer_create
+    puts "hello"
+    # if session[:user_id]
+    #   @user ||= User.find_by(id: session[:user_id])
+    #   @question = Question.find(params[:question_id])
+    #   answer = Answer.find(params[:answer_id])
+    #   @comment = @answer.comments.new(comment_params)
+    #   @comment.save
+    #   if request.xhr?
+    #     render @comment, layout: false
+    #   else
+    #     redirect_to session[:current_url]
+    #   end
+    # else
+    #   redirect_to "/login"
+    # end
   end
 
   private

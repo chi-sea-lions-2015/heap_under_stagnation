@@ -7,6 +7,25 @@
   <div class="answer_body">
     <strong>Author: </strong><%= answer.answerer.username %><br>
     <strong>Answer: </strong><%= answer.content %><br>
+
+    <% if session[:user_id]!=nil %>
+    <div class="answer_comment">
+      <h2>Add a Comment</h2>
+
+      <%= form_for :answer, url: new_question_answer_comment_path(@question, answer), remote: true, html: { class: "new_answer_comment"} do |f| %>
+      <p>
+        <%= f.label "Your comment: " %><br>
+        <%= f.text_area :content, :class => 'comment_text_area'%>
+      </p>
+      <input type="hidden" value=<%=@user.id%> name="comment[user_id]"/>
+      <p>
+        <%= f.submit %>
+      </p>
+      <% end %>
+
+    </div>
+    <% end %>
+
     <% if answer.answerer == @user %>
     <%= link_to("Edit Answer", edit_question_answer_path(@question, answer)) %>
     <% end %>
