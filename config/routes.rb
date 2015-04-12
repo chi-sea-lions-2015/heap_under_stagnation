@@ -17,9 +17,13 @@ Rails.application.routes.draw do
   delete '/logout' => 'users#destroy'
   delete '/questions' => 'questions#index'
 
-  post "/questions/:question_id/answers/:answer_id/answervoteup" => "votes#create_answer_voteup"
-  post "/questions/:question_id/answers/:answer_id/answervotedown" => "votes#create_answer_votedown"
+
+  post "/answers/:answer_id/answervoteup" => "votes#answervoteup"
+  post "/answers/:answer_id/answervotedown" => "votes#answervotedown"
 
   post '/questions/:question_id/voteup' => 'votes#voteup'
+
+  post '/questions/:question_id/voteup' => 'votes#questionvoteup'
+  post '/questions/:question_id/votedown' => 'votes#questionvotedown'
 
 end
