@@ -1,38 +1,44 @@
+<div class="question_vote_count">
+  <a href="#" class="glyphicon glyphicon-chevron-up question_up"></a>
+  <p><%= @question.total_votes %></p>
+  <a href="#" class="glyphicon glyphicon-chevron-down question_down"></a>
+</div>
+<div class="question_body">
+  <h1><%= @question.title %></h1>
+  <p><strong>Author: </strong><%= @question.asker.username %></p>
+  <p><%= @question.content %></p>
+</div>
+<h3>Comments: </h3>
+<div class="question_comment_list">
+  <%= render @question.comments %>
+</div>
 
-<h1><%= @question.title %></h1>
-<p><strong>Author: </strong><%= @question.asker.username %></p>
-<p><%= @question.content %></p>
-  <h3>Comments: </h3>
-  <div class="question_comment_list">
-    <%= render @question.comments %>
-  </div>
-
-  <% if session[:user_id]!=nil %>
-  <div class="hidden_form">
-    <h2>Add a Comment</h2>
-    <%= render 'comments/form' %>
-  </div>
-  <% end %>
+<% if session[:user_id]!=nil %>
+<div class="hidden_form">
+  <h2>Add a Comment</h2>
+  <%= render 'comments/form' %>
+</div>
+<% end %>
 
 
 <% if @question.asker == @user %>
-  <%= link_to("Edit Question", edit_question_path(@question)) %>
+<%= link_to("Edit Question", edit_question_path(@question)) %>
 <% end %>
 <br><br>
 
-  <h2>Answers:</h2>
-  <div id="answer_list">
-    <%= render @question.answers %>
-  </div>
+<h2>Answers:</h2>
+<div id="answer_list">
+  <%= render @question.answers %>
+</div>
 
-  <% if session[:user_id]!=nil %>
-  <div class="hidden_form">
+<% if session[:user_id]!=nil %>
+<div class="hidden_form">
   <h2>Add an Answer</h2>
   <%= render 'answers/form' %>
-  </div>
-  <% end %>
+</div>
+<% end %>
 
 
 <%= form_tag("/questions", :controller=>"users", :method=>"get") do %>
-  <%= submit_tag "Back" %>
+<%= submit_tag "Back" %>
 <% end %>
