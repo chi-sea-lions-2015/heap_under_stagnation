@@ -15,4 +15,5 @@ Rails.application.routes.draw do
   post '/signup' => 'users#create'
   delete '/logout' => 'users#destroy'
   delete '/questions' => 'questions#index'
+  post '/questions/:question_id/answers/:answer_id/vote' => "votes#create_answer_votes"
 end
