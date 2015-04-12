@@ -29,7 +29,7 @@
 
 <h2>Answers:</h2>
 <div id="answer_list">
-  <%= render @question.answers %>
+  <%= render @question.sort_popular_answers %>
 </div>
 
 <% if session[:user_id]!=nil %>
