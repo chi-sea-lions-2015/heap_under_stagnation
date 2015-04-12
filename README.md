@@ -1,6 +1,8 @@
 # Team Name: Heap Under Stagnation
 
 ## Paul worked on logout. I have it working minus the correct rerendering of the "login" and "sign-up buttons"
+  I redid the form for the "questions#show" page and made it into an actual form (it was just a text area that posted to nothing) I then ajaxed that form to prepend the question list
+  I redid the comments controller to allow for the creation of question comments. DON'T MODIFY IT!!! you'll need to make a custom route for answer comments. DO IT! DON'T MODIFY THE def create... I'll kill you!! I also ajaxed the form so that comments appear appended to the comment list!
 
 ### Team Member: Paul Clegg, Chase Nutile, Sara Chen, Taylor Masterson
 
