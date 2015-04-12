@@ -17,12 +17,6 @@
   <div class="col-lg-12">
     <div class="question_list">
       <% @questions.each do |question| %>
-      <a href="/questions/<%=question.id%>/voteup" class="glyphicon glyphicon-thumbs-up question_up"></a>
-      <a href="/questions/<%=question.id%>/votedown" class="glyphicon glyphicon-thumbs-down question_down"></a>
-      <div class="question_vote_count">
-        <% @question = question %>
-        <%= render 'votes/vote_div'%>
-      </div>
       <h4><%= link_to("#{question.title}",question_path(question))%></h4>
       <p> <%= question.content %> </p>
       <% end %>
