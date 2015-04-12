@@ -9,9 +9,7 @@ $(document).ready(function(){
       method: "post",
       success: function(response){
         console.log("YAYYYY!!")
-        $(".question_vote_count").html(xhr.responseText);
-
-
+        $(".question_vote_count").html(response);
       }
     })
   })
