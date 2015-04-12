@@ -5,16 +5,25 @@ class CommentsController < ApplicationController
   end
 
   def create
-    @question = Question.find(params[:question_id])
-    @answer = @question.answers.find(params[:answer_id])
-
-    @comment = Comment.find(params[:id])
+    if session[:user_id]
+      @user ||= User.find_by(id: session[:user_id])
+      @question = Question.find(params[:question_id])
+      @comment = @question.comments.new(comment_params)
+      @comment.save
+      if request.xhr?
+        render @comment, layout: false
+      else
+        redirect_to session[:current_url]
+      end
+    else
+      redirect_to "/login"
+    end
   end
 
   private
 
   def comment_params
-    params.require(:comment).permit(:title, :content)
+    params.require(:comment).permit(:content, :user_id)
   end
 
 end
