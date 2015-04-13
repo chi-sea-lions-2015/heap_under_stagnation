@@ -27,19 +27,26 @@
 <% end %>
 <br><br>
 
+
+
 <h2>Answers:</h2>
 <div id="answer_list">
-  <%= render @question.sort_popular_answers %>
-</div>
-
-<% if session[:user_id]!=nil %>
-<div class="hidden_form">
-  <h2>Add an Answer</h2>
-  <%= render 'answers/form' %>
-</div>
-<% end %>
+  <%= render @question.answers.sort_by{|answer| answer.total_votes}.reverse %>
 
 
-<%= form_tag("/questions", :controller=>"users", :method=>"get") do %>
-<%= submit_tag "Back" %>
-<% end %>
+  <% if session[:user_id]!=nil %>
+  <div class="hidden_form">
+    <h2>Add an Answer</h2>
+    <%= render 'answers/form' %>
+  </div>
+  <% end %>
+  <%= form_tag("/questions", :controller=>"users", :method=>"get") do %>
+  <%= submit_tag "Back" %>
+  <% end %>
+
+
+
+
+
+
+
