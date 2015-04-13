@@ -29,8 +29,7 @@
 
 <h2>Answers:</h2>
 <div id="answer_list">
-  <%= render @question.answers %>
-</div>
+  <%= render @question.answers.sort_by{|answer| answer.total_votes}.reverse %>
 
 <% if session[:user_id]!=nil %>
 <div class="hidden_form">
